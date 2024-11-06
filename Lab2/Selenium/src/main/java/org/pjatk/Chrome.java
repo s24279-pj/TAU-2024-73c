@@ -68,5 +68,80 @@ public class Chrome {
         }
     }
 
+    @Test
+    public void supersklep() {
+        WebDriver webDriver = new ChromeDriver();
+
+
+        try {
+            WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(10));
+            webDriver.get("https://supersklep.pl/");
+
+            String pageTitle = webDriver.getTitle();
+            // 1
+            Assertions.assertEquals("Sklep skateboardowy, snowboardowy, ze sneakersami i ubraniami streetwear | SUPERSKLEP", pageTitle);
+
+            WebElement cookieBannerAccept = webDriver.findElement(By.className("privacy-confirm-button"));
+            // 2
+            Assertions.assertTrue(cookieBannerAccept.isDisplayed());
+            cookieBannerAccept.click();
+
+            WebElement languageSelection = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("popup")));
+            WebElement dropdownLanguage = languageSelection.findElement(By.className("dropdown_option"));
+            dropdownLanguage.click();
+
+            WebElement languageOption = webDriver.findElement(By.cssSelector("div[data-id='pl']"));
+
+            // 3
+            Assertions.assertTrue(languageOption.isDisplayed());
+            languageOption.click();
+
+            WebElement languageText = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[data-id='pl'] span")));
+            // 4
+            Assertions.assertEquals("Polski/PLN", languageText.getText());
+
+            WebElement acceptLanguage = webDriver.findElement(By.className("btn-next"));
+            acceptLanguage.click();
+
+            WebElement snowboardShopSection = webDriver.findElement(By.cssSelector("a[title='Snowboard shop']"));
+            snowboardShopSection.click();
+            wait.until(ExpectedConditions.urlToBe("https://supersklep.pl/snowboard"));
+
+            WebElement glovesCategory = webDriver.findElement(By.cssSelector("a[title='Rękawice snowboardowe']"));
+            glovesCategory.click();
+            wait.until(ExpectedConditions.urlToBe("https://supersklep.pl/rekawice-snowboardowe"));
+
+            WebElement product = webDriver.findElement(By.className("cvn-product"));
+            product.click();
+
+            WebElement addToCart = wait.until(ExpectedConditions.elementToBeClickable(By.id("addToCartBtn")));
+
+            // 5
+            Assertions.assertTrue(addToCart.isDisplayed());
+            addToCart.click();
+
+            WebElement chooseProduct = wait.until(ExpectedConditions.elementToBeClickable(By.className("btn-default")));
+            chooseProduct.click();
+
+            WebElement cart = wait.until(ExpectedConditions.elementToBeClickable(By.id("asideBasket")));
+            // 6
+            Assertions.assertTrue(cart.isDisplayed());
+
+            WebElement itemsQuantity = webDriver.findElement(By.className("products-quantity"));
+            // 7
+            Assertions.assertEquals(itemsQuantity.getText(), "Produkty w koszyku (1)");
+
+            WebElement deleteButton = webDriver.findElement(By.className("btn-delete"));
+            // 8
+            Assertions.assertTrue(deleteButton.isDisplayed());
+            deleteButton.click();
+            // 9
+            Assertions.assertEquals(itemsQuantity.getText(), "Produkty w koszyku (0)");
+
+        } finally {
+            webDriver.quit();
+        }
+    }
+
 
 }
