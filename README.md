@@ -132,3 +132,66 @@ Sprawdzenie, czy elementy na stronie głównej oraz w procesie zakupu w sklepie 
 - **Test Pozytywny**: Wszystkie asercje są spełnione, a kluczowe elementy na stronie oraz proces zakupu działają poprawnie.
 - **Test Negatywny**: Każde niepowodzenie asercji wskazuje na błąd – albo strona nie załadowała się poprawnie, albo elementy nie są widoczne lub mają niewłaściwe wartości, co wymaga dalszej analizy.
 
+# 3. Scenariusz Testowy: Weryfikacja sekcji na stronie głównej oraz strony logowania na Stronie OLX.pl
+
+## Cel testu  
+Sprawdzenie, czy główne funkcje interfejsu użytkownika na stronie [olx.pl](https://www.olx.pl/) działają poprawnie, a wszystkie elementy są widoczne i interaktywne.
+
+## Kroki Testowe
+
+### 1. Otwórz Przeglądarkę i Przejdź do Strony Głównej
+- **Akcja**: Otwórz stronę główną serwisu [https://www.olx.pl/](https://www.olx.pl/).
+  
+### 2. Sprawdzenie Tytułu Strony
+- **Asercja 1**: Zweryfikuj, czy tytuł strony wynosi "Ogłoszenia - Sprzedam, kupię na OLX.pl".
+- **Oczekiwany wynik**: Tytuł strony jest poprawny, co wskazuje na załadowanie strony głównej.
+
+### 3. Weryfikacja Widoczności Banera Cookies
+- **Akcja**: Sprawdź, czy baner zgody na pliki cookies jest widoczny.
+- **Asercja 2**: Sprawdź, czy baner cookies jest wyświetlany.
+- **Oczekiwany wynik**: Baner cookies jest widoczny, a użytkownik może go zaakceptować.
+
+### 4. Akceptacja Polityki Cookies
+- **Akcja**: Kliknij przycisk „Zaakceptuj” w banerze zgody na cookies.
+- **Asercja 3**: Sprawdź, czy baner z polityką cookies znika po kliknięciu przycisku "Zaakceptuj".
+- **Oczekiwany wynik**: Po kliknięciu przycisku „Zaakceptuj”, baner zostaje zamknięty i nie jest już widoczny.
+
+### 5. Weryfikacja Widoczności Sekcji Kategorii
+- **Akcja**: Sprawdź, czy sekcja kategorii ogłoszeń jest widoczna.
+- **Asercja 4**: Sprawdź, czy sekcja kategorii jest widoczna na stronie głównej.
+- **Oczekiwany wynik**: Sekcja kategorii jest poprawnie wyświetlana, co umożliwia użytkownikowi przeglądanie różnych kategorii ogłoszeń.
+
+### 6. Weryfikacja Widoczności Sekcji Wyszukiwania
+- **Akcja**: Sprawdź, czy sekcja wyszukiwania jest dostępna i widoczna.
+- **Asercja 5**: Sprawdź, czy sekcja wyszukiwania (pasek wyszukiwania) jest widoczna.
+- **Oczekiwany wynik**: Sekcja wyszukiwania jest poprawnie wyświetlana, umożliwiając użytkownikowi wyszukiwanie ogłoszeń.
+
+### 7. Weryfikacja Widoczności Sekcji Promowanych Ogłoszeń
+- **Akcja**: Sprawdź, czy sekcja promowanych ogłoszeń jest widoczna.
+- **Asercja 6**: Sprawdź, czy sekcja promowanych ogłoszeń jest widoczna na stronie.
+- **Oczekiwany wynik**: Sekcja promowanych ogłoszeń jest widoczna, co świadczy o dostępności tych ogłoszeń na stronie głównej.
+
+### 8. Kliknięcie w Sekcję „Twoje Konto”
+- **Akcja**: Kliknij w przycisk „Twoje Konto” w prawym górnym rogu strony.
+- **Oczekiwany wynik**: Użytkownik zostaje przeniesiony na stronę logowania lub rejestracji.
+
+### 9. Weryfikacja Widoczności Sekcji Logowania
+- **Akcja**: Sprawdź, czy sekcja logowania jest widoczna po kliknięciu w „Twoje Konto”.
+- **Asercja 7**: Sprawdź, czy sekcja logowania jest wyświetlana.
+- **Oczekiwany wynik**: Sekcja logowania (formularz logowania) jest poprawnie wyświetlana.
+
+### 10. Weryfikacja Liczby Przycisków Logowania
+- **Akcja**: Sprawdź, ile przycisków logowania (np. „Zaloguj się”, „Zarejestruj się”, „Przez Facebook”) znajduje się na stronie.
+- **Asercja 8**: Sprawdź, czy na stronie znajdują się 3 przyciski logowania.
+- **Oczekiwany wynik**: Na stronie znajduje się dokładnie 3 przyciski logowania, co sugeruje, że użytkownik może wybrać preferowaną metodę logowania.
+
+### 11. Zakończenie Testu
+- **Akcja**: Zamknij przeglądarkę i zakończ sesję WebDriver.
+- **Oczekiwany wynik**: Test kończy się poprawnie, przeglądarka jest zamknięta, a sesja WebDriver zostaje zakończona.
+
+## Podsumowanie Wyników
+
+- **Test Pozytywny**: Wszystkie asercje są spełnione, a elementy na stronie głównej i na stronie logowania działają poprawnie.
+- **Test Negatywny**: Każde niepowodzenie asercji wskazuje na problem z ładowaniem elementów na stronie lub ich interaktywnością, co wymaga dalszej analizy.
+
+
