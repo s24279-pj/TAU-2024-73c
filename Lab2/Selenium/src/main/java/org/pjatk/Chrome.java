@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class Chrome {
 
@@ -137,6 +138,57 @@ public class Chrome {
             deleteButton.click();
             // 9
             Assertions.assertEquals(itemsQuantity.getText(), "Produkty w koszyku (0)");
+
+        } finally {
+            webDriver.quit();
+        }
+    }
+
+    @Test
+    public void olx() {
+        WebDriver webDriver = new ChromeDriver();
+
+        try {
+            WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(10));
+            webDriver.get("https://olx.pl/");
+
+            String pageTitle = webDriver.getTitle();
+            // 1
+            Assertions.assertEquals("Ogłoszenia - Sprzedam, kupię na OLX.pl", pageTitle);
+
+            WebElement cookieBanner = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("onetrust-policy")));
+            // 2
+            Assertions.assertTrue(cookieBanner.isDisplayed());
+
+            WebElement cookieBannerAccept = webDriver.findElement(By.id("onetrust-accept-btn-handler"));
+            cookieBannerAccept.click();
+
+            // 3
+            Assertions.assertTrue(wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("onetrust-policy"))));
+
+            WebElement categoriesSection = webDriver.findElement(By.className("css-1i7rc0q"));
+            // 4
+            Assertions.assertTrue(categoriesSection.isDisplayed());
+
+            WebElement searchSection = webDriver.findElement(By.className("css-1hf80wu"));
+            // 5
+            Assertions.assertTrue(searchSection.isDisplayed());
+
+            WebElement promotedSection = webDriver.findElement(By.className("css-uhv1v6"));
+            // 6
+            Assertions.assertTrue(promotedSection.isDisplayed());
+
+            WebElement yourAccount = webDriver.findElement(By.className("css-12l1k7f"));
+            yourAccount.click();
+
+            WebElement loginSection = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("css-1iyoj2o")));
+            // 7
+            Assertions.assertTrue(loginSection.isDisplayed());
+
+            List<WebElement> loginButtons = webDriver.findElements(By.className("css-17pvrqn"));
+            // 8
+            Assertions.assertEquals(3, loginButtons.size());
+
 
         } finally {
             webDriver.quit();
