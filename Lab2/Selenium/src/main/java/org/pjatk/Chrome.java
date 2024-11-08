@@ -195,5 +195,59 @@ public class Chrome {
         }
     }
 
+    @Test
+    public void otodom() {
+        WebDriver webDriver = new ChromeDriver();
+
+        try {
+            WebDriverWait wait =
+                    new WebDriverWait(webDriver, Duration.ofSeconds(10));
+            webDriver.get("https://www.otodom.pl/");
+
+            String pageTitle = webDriver.getTitle();
+            Assertions.assertEquals("Otodom: Nieruchomości, Mieszkania, Domy, Działki", pageTitle);
+
+            WebElement cookieBanner = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("onetrust-policy")));
+            // 2
+            Assertions.assertTrue(cookieBanner.isDisplayed());
+
+            WebElement cookieBannerAccept = webDriver.findElement(By.id("onetrust-accept-btn-handler"));
+            cookieBannerAccept.click();
+
+            // 3
+            Assertions.assertTrue(wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("onetrust-policy"))));
+
+            WebElement searchSection = webDriver.findElement(By.className("css-29fs6d"));
+            // 4
+            Assertions.assertTrue(searchSection.isDisplayed());
+
+            WebElement propertyTypeDropdownList = webDriver.findElement(By.className("react-select__control"));
+            propertyTypeDropdownList.click();
+
+            WebElement dropDownList = webDriver.findElement(By.className("react-select__menu"));
+            // 5
+            Assertions.assertTrue(dropDownList.isDisplayed());
+
+            WebElement flatOption = webDriver.findElement(By.id("react-select-estate-option-0"));
+            // 6
+            Assertions.assertEquals("Mieszkania", flatOption.getText());
+
+            WebElement searchButton = webDriver.findElement(By.id("search-form-submit"));
+            searchButton.submit();
+
+            wait.until(ExpectedConditions.urlToBe("https://www.otodom.pl/pl/wyniki/sprzedaz/mieszkanie/cala-polska?viewType=listing"));
+
+            WebElement header = webDriver.findElement(By.className("ezcytw15"));
+            // 7
+            Assertions.assertEquals("Mieszkania na sprzedaż: Cała Polska", header.getText());
+
+            List<WebElement> list = webDriver.findElements(By.className("eeungyz1"));
+            // 8
+            Assertions.assertEquals(37, list.size());
+
+        } finally {
+            webDriver.quit();
+        }
+    }
 
 }
