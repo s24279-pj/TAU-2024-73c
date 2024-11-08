@@ -195,3 +195,64 @@ Sprawdzenie, czy główne funkcje interfejsu użytkownika na stronie [olx.pl](ht
 - **Test Negatywny**: Każde niepowodzenie asercji wskazuje na problem z ładowaniem elementów na stronie lub ich interaktywnością, co wymaga dalszej analizy.
 
 
+# 4. Scenariusz: Weryfikacja wyszukiwania mieszkań na stronie otodom.pl
+
+## Cel testu
+Sprawdzenie, czy funkcjonalności wyszukiwania mieszkań na stronie [Otodom](https://www.otodom.pl/) działają poprawnie, w tym akceptacja polityki cookies, wyświetlanie wyników wyszukiwania oraz poprawność wyników.
+
+## Kroki Testowe
+
+### 1. Otwórz Przeglądarkę i Przejdź do Strony Głównej
+- **Akcja**: Otwórz stronę główną serwisu [https://www.otodom.pl/](https://www.otodom.pl/).
+
+### 2. Sprawdzenie Tytułu Strony
+- **Asercja 1**: Zweryfikuj, czy tytuł strony wynosi "Otodom: Nieruchomości, Mieszkania, Domy, Działki".
+- **Oczekiwany wynik**: Tytuł strony jest poprawny, co wskazuje na poprawne załadowanie strony głównej.
+
+### 3. Zaakceptowanie Polityki Cookies
+- **Akcja**: Czekaj na wyświetlenie przycisku „Akceptuj” w oknie zgody na pliki cookies.
+- **Asercja 2**: Sprawdź, czy przycisk „Akceptuj” jest widoczny, a następnie kliknij w niego, aby zaakceptować pliki cookies.
+- **Oczekiwany wynik**: Polityka cookies zostaje zaakceptowana, a okno zgody znika.
+
+### 4. Weryfikacja Widoczności Sekcji Wyszukiwania
+- **Akcja**: Znajdź sekcję wyszukiwania mieszkań na stronie.
+- **Asercja 3**: Sprawdź, czy sekcja wyszukiwania jest widoczna.
+- **Oczekiwany wynik**: Sekcja wyszukiwania jest widoczna i gotowa do interakcji.
+
+### 5. Otwarcie Rozwijanej Listy Typów Nieruchomości
+- **Akcja**: Kliknij na rozwijane menu, które umożliwia wybór typu nieruchomości.
+- **Asercja 4**: Sprawdź, czy lista rozwijana jest widoczna.
+- **Oczekiwany wynik**: Menu rozwija się poprawnie, a użytkownik może wybrać typ nieruchomości.
+
+### 6. Wybór Opcji „Mieszkania” z Listy
+- **Akcja**: Wybierz opcję „Mieszkania” z rozwijanej listy typów nieruchomości.
+- **Asercja 5**: Sprawdź, czy po wybraniu opcji „Mieszkania” element zawiera tekst "Mieszkania".
+- **Oczekiwany wynik**: Opcja „Mieszkania” zostaje wybrana, a tekst przycisku jest zgodny z oczekiwanym.
+
+### 7. Kliknięcie Przycisku „Szukaj”
+- **Akcja**: Kliknij przycisk „Szukaj”, aby rozpocząć wyszukiwanie mieszkań.
+- **Asercja 6**: Sprawdź, czy po kliknięciu przycisku, strona przekierowuje do wyników wyszukiwania.
+- **Oczekiwany wynik**: Po kliknięciu przycisku użytkownik zostaje przekierowany do wyników wyszukiwania dla mieszkań.
+
+### 8. Weryfikacja Nagłówka na Stronie Wyników
+- **Akcja**: Sprawdź nagłówek na stronie wyników wyszukiwania.
+- **Asercja 7**: Sprawdź, czy nagłówek zawiera tekst „Mieszkania na sprzedaż: Cała Polska”.
+- **Oczekiwany wynik**: Nagłówek strony wyników wyszukiwania jest poprawny i zawiera oczekiwany tekst.
+
+### 9. Sprawdzenie Liczby Wyników Wyszukiwania
+- **Akcja**: Sprawdź, ile wyników wyszukiwania jest wyświetlanych na stronie.
+- **Asercja 8**: Sprawdź, czy liczba wyników wynosi 37.
+- **Oczekiwany wynik**: Wyniki wyszukiwania zawierają 37 pozycji.
+
+### 10. Zakończenie Testu
+- **Akcja**: Zamknij przeglądarkę i zakończ sesję WebDriver.
+
+## Podsumowanie Wyników
+
+- **Test Pozytywny**: Wszystkie asercje zostały spełnione, a elementy na stronie Otodom są widoczne i działają zgodnie z oczekiwaniami. Wyszukiwanie mieszkań na stronie działa poprawnie.
+- **Test Negatywny**: Każde niepowodzenie asercji wskazuje na problem z załadowaniem strony, wyświetlaniem elementów lub niewłaściwymi wartościami, co wymaga dalszej analizy.
+
+---
+
+### Opis użytego podejścia:
+Test został zaprojektowany z wykorzystaniem narzędzi Selenium WebDriver do automatyzacji interakcji z przeglądarką i weryfikacji działania strony Otodom. W szczególności sprawdzono poprawność widoczności elementów, interakcji użytkownika (kliknięcia, wybory z list rozwijanych) oraz weryfikację poprawności wyników wyszukiwania.
