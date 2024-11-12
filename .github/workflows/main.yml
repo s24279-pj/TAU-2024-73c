@@ -19,3 +19,4 @@ jobs:
           distribution: 'temurin'
       - name: Run tests with Maven
         run: mvn test
+        working-directory: ./Lab3
