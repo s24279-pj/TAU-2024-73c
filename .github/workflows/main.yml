@@ -22,8 +22,8 @@ jobs:
 
       - name: Build and install dependencies with Maven
         run: mvn clean install
-        working-directory: ./Lab3 
+        working-directory: ./Lab3/simple-game 
 
       - name: Run tests with Maven
         run: mvn test
-        working-directory: ./Lab3
+        working-directory: ./Lab3/simple-game
